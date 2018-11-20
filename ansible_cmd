@@ -1,0 +1,2 @@
+# Check remote host information
+ansible <kamy-win> -i <inventory/mtl> -m setup

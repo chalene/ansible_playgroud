@@ -1,0 +1,31 @@
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [chalene]
+ok: [kamy-win]
+
+TASK [ping win remote] *********************************************************
+skipping: [chalene]
+ok: [kamy-win]
+
+TASK [win whoami with condition] ***********************************************
+skipping: [chalene]
+changed: [kamy-win]
+
+TASK [create win remote file fool.txt] *****************************************
+skipping: [chalene]
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ReadTimeout: HTTPSConnectionPool(host='192.168.1.122', port=5986): Read timed out. (read timeout=30)
+fatal: [kamy-win]: FAILED! => {"msg": "Unexpected failure during module execution.", "stdout": ""}
+
+TASK [restart everything] ******************************************************
+changed: [chalene]
+
+TASK [wget baidu.com] **********************************************************
+fatal: [chalene]: FAILED! => {"changed": false, "cmd": "wget 220.181.57.216", "msg": "[Errno 2] No such file or directory", "rc": 2}
+	to retry, use: --limit @/Users/chalene/Workshop/ansible_workground/os.retry
+
+PLAY RECAP *********************************************************************
+chalene                    : ok=2    changed=1    unreachable=0    failed=1   
+kamy-win                   : ok=3    changed=1    unreachable=0    failed=1   
+

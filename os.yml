@@ -1,0 +1,62 @@
+- hosts: all #kamy-win
+  remote_user: kamy
+
+  tasks:
+
+    - name: ping win remote
+      win_ping:
+        dest: 220.181.57.216
+        source: 172.217.25.238 #127.0.0.1
+        state: present
+      when: ansible_os_family == "Windows"
+
+    - name: ping win remote
+      win_ping:
+        dest: 220.181.57.216
+        source: 172.217.25.238 #127.0.0.1
+        state: present
+      when: ansible_os_family == "Windows"
+
+    - name: win whoami with condition
+      win_command: whoami
+      when: ansible_os_family == "Windows"
+
+    - name: create win remote file fool.txt
+      win_file:
+        path: C:\fool.txt
+        state: touch
+      when: ansible_os_family == "Windows"
+
+    - name: restart everything
+      command: echo "this task will restart the web services"
+      when: ansible_distribution == "MacOSX" and ansible_distribution_version == "10.13.6"
+
+    - name: wget baidu.com
+      command: wget 220.181.57.216
+      when: ansible_distribution == "MacOSX" and ansible_distribution_version == "10.13.6"
+
+    - name: print
+      command: echo hello
+      when: ansible_distribution == "MacOSX" and ansible_distribution_version == "10.13.6"
+
+    - name: ping baidu.com
+      net_ping:
+        dest: 127.0.0.1
+        source: 220.181.57.216
+        state: present
+      #when: ansible_distribution == "MacOSX" and ansible_distribution_version == "10.13.6"
+
+    - name: ping baidu.com with other source
+      net_ping:
+        dest: 220.181.57.216
+        source: 172.217.25.238 #127.0.0.1
+        state: present
+      when: ansible_distribution == "MacOSX" and ansible_distribution_version == "10.13.6"
+
+    - name: ping port
+      wait_for: host=220.181.57.216 port=8080 timeout=1
+      when: ansible_distribution == "MacOSX" and ansible_distribution_version == "10.13.6"
+
+    #- name: wget to target folder
+      #file: state=directory path={{ common.project_dir }}
+      #get_url: url={{ opencv.url }} dest={{ common.project_dir }}/{{ opencv.file }}
