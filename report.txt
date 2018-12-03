@@ -1,3 +1,5 @@
+https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-1.10.0.2131.jar
+
 
 PLAY [all] *********************************************************************
 
