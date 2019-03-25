@@ -1,1 +1,1 @@
-xpath=(//a[contains(text(),'Advanced Search')])[2]
+xpath=//div[@id='footer-sitemap-1']/ul/li[2]/a
